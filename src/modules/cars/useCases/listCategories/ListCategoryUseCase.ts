@@ -1,11 +1,6 @@
 import { Category } from "../../model/Category";
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
-interface IRequest {
-    name: string;
-    description: string;
-}
-
 class ListCategoryUseCase{
 
 
