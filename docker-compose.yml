@@ -2,9 +2,9 @@ version: '2.4.1'
 
 
 services: 
-  database:
+  database_ignite:
     image: postgres
-    container_name: database
+    container_name: database_ignite
     restart: always
     ports:
       - 5432:5432
@@ -22,9 +22,9 @@ services:
     volumes:
       - .:/usr/app
     links:
-      - database
+      - database_ignite
     depends_on:
-      - database
+      - database_ignite
 volumes:
   pgdata:
     driver: local
