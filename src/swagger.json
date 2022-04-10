@@ -107,14 +107,13 @@
                 "description": "Import categories",
                 "requestBody": {
                     "content": {
-                        "application/octet-stream": {
+                        "multipart/form-data": {
                             "schema": {
-                                "type": "string",
+                                "type": "object",
                                 "properties": {
                                     "file": {
                                         "type": "string",
-                                        "description": "File to import",
-                                        "example": "File to import  sample"
+                                        "format": "binary"
                                     }
                                 }
                             }
