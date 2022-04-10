@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "RentalX API",
+        "title": "RentX API",
         "description": "This is an API Rent",
         "version": "1.0.0",
         "contact": {
@@ -95,6 +95,139 @@
                     "500": {
                         "description": "Internal server error"
                     }
+                }
+            }
+        },
+        "/categories/import" : {
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Import categories",
+                "description": "Import categories",
+                "requestBody": {
+                    "content": {
+                        "application/octet-stream": {
+                            "schema": {
+                                "type": "string",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "description": "File to import",
+                                        "example": "File to import  sample"
+                                    }
+                                }
+                            }
+                           
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Categories imported"
+                    },
+                    "400": {
+                        "description": "Invalid category object"
+                       
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/specifications": {
+            "post": {
+                "tags": [
+                    "Specifications"
+                ],
+                "summary": "Create a new specification",
+                "description": "Create a new specification",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Specification"
+                            }
+                           
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Specification created"
+                    },
+                    "400": {
+                        "description": "Invalid specification object"
+                       
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Specifications"
+                ],
+                "summary": "List all specifications",
+                "description": "List all specifications",
+                "responses": {
+                    "200": {
+                        "description": "Specifications list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "description": "Specification id",
+                                                "example": 1
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "description": "Specification name",
+                                                "example": "Specification name  sample"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "description": "Specification description",
+                                                "example": "Specification description  sample"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "description": "Specification created at",
+                                                "example": "2020-06-01T00:00:00.000Z"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Specification": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Specification name",
+                    "example": "Specification name  sample"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Specification description",
+                    "example": "Specification description  sample"
                 }
             }
         }
