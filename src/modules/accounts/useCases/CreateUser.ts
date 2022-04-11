@@ -1,6 +1,0 @@
-
-class CreateUser {
-
-}
-
-export { CreateUser };

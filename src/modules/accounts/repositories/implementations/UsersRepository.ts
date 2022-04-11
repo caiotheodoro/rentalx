@@ -1,6 +1,6 @@
 import { getRepository, Repository } from "typeorm";
-import { ICreateUserDTO } from "../../../dtos/ICreateUserDTO";
-import { User } from "../../User";
+import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
+import { User } from "../../entities/User";
 import {  IUsersRepository } from "../IUsersRepository";
 
 class UsersRepository implements IUsersRepository {
@@ -16,6 +16,7 @@ class UsersRepository implements IUsersRepository {
             email,
             driver_license,
             password,
+            isAdmin: false
         });
 
 
