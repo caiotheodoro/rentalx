@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
+import { User } from "../../entities/User";
 
 
 @injectable()
@@ -12,17 +13,17 @@ class CreateUserUseCase {
         private usersRepository: IUsersRepository) { }
 
 
-    async execute({ driver_license, email, name, password }: ICreateUserDTO): Promise<void> {
+    async execute({ driver_license, email, name, password }: ICreateUserDTO): Promise<User> {
 
 
-        await this.usersRepository.create({
+        const user = await this.usersRepository.create({
             driver_license,
             email,
             name,
             password,
         })
 
-
+        return user
         
     }
 
