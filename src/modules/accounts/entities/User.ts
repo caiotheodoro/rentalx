@@ -11,7 +11,7 @@ class User {
     @Column()
     name: string;
 
-    @Column()
+    @Column({unique: true})
     email: string;
 
     @Column()
@@ -22,6 +22,9 @@ class User {
 
     @Column()
     isAdmin: boolean;
+
+    @Column({nullable: true})
+    avatar: string;
 
     @CreateDateColumn()
     created_at: Date;
